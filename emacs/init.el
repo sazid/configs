@@ -20,6 +20,7 @@
 ;; magit
 ;; spacemacs-theme
 ;; color-theme-sanityinc-tomorrow
+;; rust-mode
 
 
 (require 'package)
