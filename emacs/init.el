@@ -209,3 +209,5 @@ There are two things you can do about this warning:
 ;; ace-window
 (global-set-key (kbd "M-o") 'ace-window)
 
+;;rust-mode
+(require 'rust-mode)
