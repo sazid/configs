@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # for java applications
-#wmname LG3D
+wmname LG3D
 
 # keybaord shortcut daemon
 sxhkd &
@@ -11,6 +11,13 @@ $HOME/.config/polybar/launch.sh
 
 # Wallpaper - pywal
 $HOME/.local/bin/wal -i $HOME/Pictures/Wallpapers/
+
+# Gnome services
+#exec --no-startup-id /usr/lib/gsd-xsettings
+#exec_always --no-startup-id gnome-power-manager
+#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec --no-startup-id gnome-flashback
+#exec --no-startup-id /usr/bin/gnome-screensaver
 
 # handle monitors
 bspc monitor HDMI-0 -d I II III IV V
