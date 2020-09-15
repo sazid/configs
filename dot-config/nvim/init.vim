@@ -1,4 +1,4 @@
-" Place in ~/.vimrc
+" Place in ~/.config/nvim/init.vim
 
 set nocompatible
 
