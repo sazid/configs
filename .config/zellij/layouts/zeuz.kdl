@@ -1,0 +1,29 @@
+layout {
+    cwd "$HOME/workspace/zeuz"
+    pane_template name="docker-exec" {
+        command "docker"
+    }
+    pane split_direction="vertical" {
+        docker-exec start_suspended=true {
+            args "exec" "-it" "dev-django-1" "sh" "-c" "cd django && python manage.py runserver 0:8000"
+        }
+        docker-exec start_suspended=true {
+            args "exec" "-it" "dev-gql-1" "sh" "-c" "cd gql && fastapi dev --port 9000 --host 0.0.0.0"
+        }
+        pane command="btop"
+    }
+    pane {
+        docker-exec start_suspended=true {
+            args "exec" "-it" "dev-zai-1" "sh" "-c" "cd . && uv run uvicorn app.server:app --host 0.0.0.0 --port 8080 --reload"
+        }
+        docker-exec start_suspended=true {
+            args "exec" "-it" "dev-django-1" "sh" "-c" "cd frontend && npm run watch"
+        }
+        docker-exec start_suspended=true {
+            args "exec" "-it" "dev-zsvc-1" "sh" "-c" "cd zsvc && go run cmd/zsvc/zsvc.go"
+        }
+    }
+    pane size=1 borderless=true {
+        plugin location="status-bar"
+    }
+}
